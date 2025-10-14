@@ -226,16 +226,40 @@ body {
   display: none;
   flex-direction: column;
   gap: 16px;
+  
+  height: 100%;           /* nodrošina augstumu pilnu konteinerī */
+  overflow-y: auto;       /* vertikāla ritināšana, ja saturs pārsniedz augstumu */
+  scrollbar-width: thin;  /* šaurāks ritjoslas stils Firefox */
+  scrollbar-color: #00d4ff #182a44; /* ritjoslas krāsas (pavedēji un fons) */
 }
 
+.tabcontent::-webkit-scrollbar {
+  width: 8px;              /* ritjoslas platums Chrome un Edge */
+}
+
+.tabcontent::-webkit-scrollbar-thumb {
+  background: #00d4ff;     /* ritjoslas poga */
+  border-radius: 10px;
+}
+
+.tabcontent::-webkit-scrollbar-track {
+  background: #182a44;     /* ritjoslas fons */
+  border-radius: 10px;
+}
+
+
 .recipe-row {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 14px;
-  background: #2b3b55;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* Uzbraucot uz div palielināt mērogu un pievienot ēnu */
+.recipe-row:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 212, 255, 0.5);
+  z-index: 10;  /* lai būtu virs citiem elementiem */
 }
 
 .recipe-info {
