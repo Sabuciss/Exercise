@@ -247,7 +247,7 @@
                     </div>
                 </div>
                 <div class="recipe-row">
-                    <img class="recipe-img" src="/img/22.jpeg" alt="Oatmeal">
+                    <img class="recipe-img" src="/img/23.jpeg" alt="Oatmeal">
                     <div class="recipe-info">
                     <div class="recipe-title">Oatmeal with Fruits</div>
                     <div class="recipe-desc">Viegla brokastu maltīte ar šķiedrvielām un vitamīniem.</div>

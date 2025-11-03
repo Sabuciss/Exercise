@@ -186,6 +186,8 @@ body {
   font-weight: 500;
 }
 
+
+
 /* RIGHT (Food) */
 .right-container {
   height: 90vh;
@@ -226,7 +228,6 @@ body {
   display: none;
   flex-direction: column;
   gap: 16px;
-  
   height: 100%;           /* nodrošina augstumu pilnu konteinerī */
   overflow-y: auto;       /* vertikāla ritināšana, ja saturs pārsniedz augstumu */
   scrollbar-width: thin;  /* šaurāks ritjoslas stils Firefox */
@@ -249,10 +250,15 @@ body {
 
 
 .recipe-row {
+  display: flex;             /* Izkārto divus elementus horizontāli */
+  align-items: flex-start;   /* Novieto elementus vertikāli sākumā */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   border-radius: 12px;
   overflow: hidden;
   cursor: pointer;
+  padding: 10px;
+  gap: 20px;                /* Lielāks atstatums starp bildi un tekstu */
+  max-width: 100%;          /* Maksimālais platums, lai nepārsniedz konteineru */
 }
 
 /* Uzbraucot uz div palielināt mērogu un pievienot ēnu */
@@ -263,19 +269,32 @@ body {
 }
 
 .recipe-info {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+  flex: 1;               /* Lai aizņemtu visu papildu platumu */
+ font-weight: 700;
+ font-size: 1.1em;
+  min-width: 250px;       /* Minimālais platums, lai teksta daļa būtu stabila */
 }
 
+/* Teksta lieluma palielināšana, ja nepieciešams */
 .recipe-title {
+  font-size: 1.5em;
   font-weight: 700;
   color: #ffffff;
-  font-size: 1.05em;
+  text-shadow: 5px 5px 0 #ff005e, 10px 10px 0 #00d4ff;
+  animation: shadow-dance 2s infinite;
+}
+@keyframes shadow-dance {
+  0%, 100% {
+    text-shadow: 5px 5px 0 #ff005e, 10px 10px 0 #00d4ff;
+  }
+  50% {
+    text-shadow: -5px -5px 0 #00d4ff, -10px -10px 0 #ff005e;
+  }
 }
 
+/* Apraksts un pārējais teksts paliek nemainīgs */
 .recipe-desc {
-  font-size: 0.9em;
+  font-size: 1.1em;
   color: #c7d9ef;
 }
 
@@ -291,9 +310,10 @@ body {
 }
 
 .recipe-img {
-  width: 56px;
-  height: 56px;
+  width: 80px;               /* Uzsākot ar lielāku izmēru */
+  height: 80px;
   object-fit: cover;
   border-radius: 10px;
   flex-shrink: 0;
+  transition: transform 0.3s ease;
 }
