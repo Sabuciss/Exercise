@@ -263,6 +263,12 @@
     </div>    
 
     <script src="script.js"></script>
-
+    <div id="exerciseModal" class="exercise-modal">
+        <div class="exercise-modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2 id="modalExerciseName"></h2>
+            <video id="modalExerciseVideo" controls loop muted playsinline></video>
+        </div>
+    </div>
 </body>
 </html>

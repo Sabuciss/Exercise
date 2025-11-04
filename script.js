@@ -77,7 +77,7 @@ function generateWorkout(tabName) {
       let randomIndex = Math.floor(Math.random() * options.length);
       let exercise = options.splice(randomIndex, 1)[0];
       chosenExercises.push(`
-        <div class="exercise-card">
+        <div class="exercise-card" onclick="openExerciseModal('${exercise.replace(/'/g, "\\'")}')">
           <span class="exercise-icon">🏋️</span>
           <div class="exercise-text">
             <div class="exercise-name">${exercise}</div>
@@ -97,3 +97,103 @@ function generateWorkout(tabName) {
 
   resultDiv.innerHTML = workoutPlan.join("");
 }
+
+const exerciseVideos = {
+  "Bench Press": "https://media.musclewiki.com/media/uploads/videos/branded/male-barbell-bench-press-front.mp4",
+  "Push-Ups": "https://media.musclewiki.com/media/uploads/videos/branded/male-Bodyweight-push-up-side.mp4",
+  "Incline Dumbbell Press": "https://media.musclewiki.com/media/uploads/videos/branded/male-dumbbell-incline-bench-press-front_q2q0T12.mp4",
+  "Chest Fly": "https://media.musclewiki.com/media/uploads/videos/branded/male-dumbbell-incline-chest-flys-side_em1D4Db.mp4",
+  "Cable Crossover": "https://media.musclewiki.com/media/uploads/videos/branded/male-Cables-cable-cross-pushdown-side.mp4",
+
+  "Pull-Ups": "https://media.musclewiki.com/media/uploads/videos/branded/male-bodyweight-pullup-front.mp4",
+  "Deadlift": "https://media.musclewiki.com/media/uploads/videos/branded/male-Barbell-barbell-deadlift-side.mp4",
+  "Barbell Row": "https://media.musclewiki.com/media/uploads/videos/branded/male-barbell-bent-over-row-side.mp4",
+  "Lat Pulldown": "https://media.musclewiki.com/media/uploads/videos/branded/male-machine-pulldown-side.mp4",
+  "Single Arm Dumbbell Row": "https://media.musclewiki.com/media/uploads/videos/branded/male-Dumbbells-dumbbell-single-arm-row-side.mp4",
+
+  "Squats": "https://media.musclewiki.com/media/uploads/videos/branded/male-Barbell-barbell-squat-side.mp4",
+  "Lunges": "https://media.musclewiki.com/media/uploads/videos/branded/male-Bodyweight-forward-lunges-side.mp4",
+  "Leg Press": "https://media.musclewiki.com/media/uploads/videos/branded/male-machine-leg-press-side.mp4",
+  "Step-Ups": "",
+  "Leg Extensions": "",
+
+  "Bicep Curls": "",
+  "Tricep Dips": "",
+  "Hammer Curls": "",
+  "Skull Crushers": "",
+  "Close-Grip Pushups": "",
+
+  "Overhead Press": "",
+  "Lateral Raises": "",
+  "Arnold Press": "",
+  "Front Raises": "",
+  "Upright Row": "",
+
+  "Barbell Curls": "",
+  "Chin-Ups": "",
+  "Cable Curls": "",
+  "Concentration Curls": "",
+  "EZ Bar Curl": "",
+
+  "Close Grip Bench Press": "",
+  "Overhead Tricep Extension": "",
+  "Dips": "",
+  "Tricep Pushdowns": "",
+  "Kickbacks": "",
+
+  "Front Squats": "",
+  "Leg Extensions (Quads)": "",
+  "Bulgarian Split Squats": "",
+  "Hack Squats": "",
+  "Sissy Squats": "",
+
+  "Romanian Deadlift": "",
+  "Leg Curl": "",
+  "Good Mornings": "",
+  "Nordic Hamstring Curl": "",
+  "Kettlebell Swings": "",
+
+  "Hip Thrusts": "",
+  "Glute Kickbacks": "",
+  "Sumo Deadlift": "",
+  "Step-Ups (Glutes)": "",
+  "Frog Pumps": "",
+
+  
+  "Standing Calf Raise": "",
+  "Seated Calf Raise": "",
+  "Donkey Calf Raise": "",
+  "Single-Leg Calf Raise": "",
+  "Jump Rope": ""
+};
+
+
+
+
+function openExerciseModal(exerciseName) {
+  const modal = document.getElementById("exerciseModal");
+  const nameElem = document.getElementById("modalExerciseName");
+  const vidElem = document.getElementById("modalExerciseVideo");
+
+  nameElem.textContent = exerciseName;
+
+  const videoUrl = exerciseVideos[exerciseName];
+
+  if (videoUrl) {
+    vidElem.src = videoUrl;
+    modal.style.display = "flex";
+  } else {
+    alert("No video found for " + exerciseName);
+  }
+}
+
+function closeModal() {
+  const modal = document.getElementById("exerciseModal");
+  const vidElem = document.getElementById("modalExerciseVideo");
+
+  vidElem.pause();
+  vidElem.src = "";
+  modal.style.display = "none";
+}
+
+
